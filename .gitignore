@@ -1,0 +1,11 @@
+# IDEs
+
+## IntelliJ
+.idea
+**/*.iml
+
+# Bazel
+**/bazel-*
+
+# Node
+node_modules
