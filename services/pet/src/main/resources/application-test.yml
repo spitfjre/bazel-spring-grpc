@@ -3,5 +3,9 @@ grpc:
     inProcess:
       address: in-process:test
   server:
-    in-process-name: test
+    inProcessName: test
     port: -1
+
+spring:
+  liquibase:
+    change-log: classpath:db.changelog-master.xml

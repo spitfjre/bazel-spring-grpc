@@ -17,11 +17,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @ActiveProfiles("test")
 @DirtiesContext
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
+@SpringJUnitConfig(classes = TestConfiguration.class)
 public class PetControllerTest {
 
     @Autowired
@@ -35,7 +37,7 @@ public class PetControllerTest {
     private PetServiceGrpc.PetServiceBlockingStub blockingStub;
 
     @Test
-    void givenAddPetRequest_addPet_isSuccessful() {
+    public void givenAddPetRequest_addPet_isSuccessful() {
         // given
         final String petName = "#PET_NAME";
         final Pet.Status petStatus = Pet.Status.STATUS_AVAILABLE;

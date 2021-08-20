@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <databaseChangeLog
-    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd"
 >
     <changeSet id="20210812_0" author="spitfjre">
         <!--Category-->
@@ -12,10 +12,10 @@
             </column>
             <column name="name" type="varchar(50)">
                 <constraints
-                    notNullConstraintName="category_name_notnull"
-                    nullable="false"
-                    unique="true"
-                    uniqueConstraintName="category_name_unq"
+                        notNullConstraintName="category_name_notnull"
+                        nullable="false"
+                        unique="true"
+                        uniqueConstraintName="category_name_unq"
                 />
             </column>
         </createTable>
@@ -27,9 +27,9 @@
             </column>
             <column name="category_id" type="bigint">
                 <constraints
-                    foreignKeyName="pet_category_id_fk"
-                    referencedColumnNames="id"
-                    referencedTableName="category"
+                        foreignKeyName="pet_category_id_fk"
+                        referencedColumnNames="id"
+                        referencedTableName="category"
                 />
             </column>
             <column name="name" type="varchar(50)">
@@ -47,10 +47,10 @@
             </column>
             <column name="name" type="varchar(50)">
                 <constraints
-                    notNullConstraintName="tag_name_notnull"
-                    nullable="false"
-                    unique="true"
-                    uniqueConstraintName="tag_name_unq"
+                        notNullConstraintName="tag_name_notnull"
+                        nullable="false"
+                        unique="true"
+                        uniqueConstraintName="tag_name_unq"
                 />
             </column>
         </createTable>
