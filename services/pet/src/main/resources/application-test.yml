@@ -3,7 +3,7 @@ grpc:
     inProcess:
       address: in-process:test
   server:
-    inProcessName: test
+    in-process-name: test
     port: -1
 
 spring:

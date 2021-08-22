@@ -19,3 +19,6 @@ additional_languages:
   # python
   # scala
   # typescript
+
+exclude_library:
+  v1/https/repo1.maven.org/maven2/jakarta/annotation/jakarta.annotation-api/1.3.5/jakarta.annotation-api-1.3.5.jar

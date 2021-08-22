@@ -7,7 +7,7 @@ import com.spitfjre.pet.entity.TagDbo;
 import io.swagger.petstore.api.v2.AddPetRequest;
 import io.swagger.petstore.api.v2.AddPetResponse;
 import io.swagger.petstore.api.v2.Pet;
-import io.swagger.petstore.api.v2.PetServiceGrpc;
+import io.swagger.petstore.api.v2.PetServiceGrpc.PetServiceBlockingStub;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,13 +17,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @ActiveProfiles("test")
 @DirtiesContext
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
-@SpringJUnitConfig(classes = TestConfiguration.class)
+@SpringBootTest(
+    properties = {
+        "grpc.server.inProcessName=test", // Enable inProcess server
+        "grpc.server.port=-1", // Disable external server
+        "grpc.client.inProcess.address=in-process:test", // Configure the client to connect to the inProcess server
+    }
+)
 public class PetControllerTest {
 
     @Autowired
@@ -34,7 +38,7 @@ public class PetControllerTest {
 
     @GrpcClient("inProcess")
     @SuppressWarnings("unused")
-    private PetServiceGrpc.PetServiceBlockingStub blockingStub;
+    private PetServiceBlockingStub blockingStub;
 
     @Test
     public void givenAddPetRequest_addPet_isSuccessful() {

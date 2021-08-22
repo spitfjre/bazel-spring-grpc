@@ -12,33 +12,28 @@ http_archive(
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 load("@rules_jvm_external//:specs.bzl", "maven")
 
-spring_boot_version = "2.4.5"
+spring_boot_version = "2.3.8.RELEASE"
 
-spring_version = "5.3.9"
+grpc_version = "1.35.0"
 
-grpc_version = "1.37.0"
-
-grpc_spring_version = "2.12.0.RELEASE"
+grpc_spring_version = "2.11.0.RELEASE"
 
 maven_install(
     name = "maven",
     artifacts = [
-        "org.springframework.boot:spring-boot-starter-parent:%s" % spring_boot_version,
         "org.springframework.boot:spring-boot-starter-data-jpa:%s" % spring_boot_version,
         "org.springframework.boot:spring-boot-starter-validation:%s" % spring_boot_version,
         "org.springframework.boot:spring-boot-starter-test:%s" % spring_boot_version,
+        "net.devh:grpc-spring-boot-starter:%s" % grpc_spring_version,
+        "io.grpc:grpc-stub:%s" % grpc_version,
         maven.artifact(
-            group = "net.devh",
-            artifact = "grpc-spring-boot-starter",
-            version = grpc_spring_version,
+            group = "io.grpc",
+            artifact = "grpc-testing",
+            version = grpc_version,
             exclusions = [
-                "io.grpc:grpc-netty-shaded",
+                "junit:junit",
             ],
         ),
-        "io.grpc:grpc-netty:%s" % grpc_version,
-        "io.grpc:grpc-stub:%s" % grpc_version,
-        "io.grpc:grpc-testing:%s" % grpc_version,
-        "jakarta.annotation:jakarta.annotation-api:1.3.5",
         "com.h2database:h2:1.4.199",
         "org.liquibase:liquibase-core:4.4.3",
         "org.projectlombok:lombok:1.18.20",
