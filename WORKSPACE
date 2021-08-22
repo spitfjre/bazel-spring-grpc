@@ -34,6 +34,7 @@ maven_install(
                 "junit:junit",
             ],
         ),
+        "org.mockito:mockito-core:3.12.1",
         "com.h2database:h2:1.4.199",
         "org.liquibase:liquibase-core:4.4.3",
         "org.projectlombok:lombok:1.18.20",

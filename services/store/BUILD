@@ -11,20 +11,21 @@ deps = [
 java_library(
     name = "service_lib",
     srcs = glob([
-        "src/main/java/com/spitfjre/pet/**/*.java",
+        "src/main/java/com/spitfjre/store/**/*.java",
     ]),
     resources = glob([
         "src/main/resources/**",
     ]),
     deps = [
         "//api:pet_service__java",
+        "//api:store_service__java",
         "//services:lombok",
     ] + deps,
 )
 
 java_binary(
     name = "service",
-    main_class = "com.spitfjre.pet.Application",
+    main_class = "com.spitfjre.store.Application",
     runtime_deps = [
         ":service_lib",
     ],
@@ -43,13 +44,13 @@ test_deps = [
 java_junit5_test(
     name = "spring_test",
     srcs = glob([
-        "src/test/java/com/spitfjre/pet/**/*.java",
+        "src/test/java/com/spitfjre/store/**/*.java",
     ]),
     classpath_resources = ["src/main/resources/db/changelog/db.changelog-master.xml"],
     resources = glob([
         "src/main/resources/**",
     ]),
-    test_package = "com.spitfjre.pet",
+    test_package = "com.spitfjre.store",
     deps = [
         ":service_lib",
     ] + test_deps,

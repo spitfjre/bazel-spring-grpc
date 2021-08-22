@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd"
+>
+    <changeSet id="20210823_0" author="spitfjre">
+        <!--Order-->
+        <createTable tableName="order_table">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" primaryKeyName="order_id_pk" />
+            </column>
+            <column name="pet_id" type="bigint">
+                <constraints nullable="false" notNullConstraintName="order_pet_id_notnull" />
+            </column>
+            <column name="quantity" type="int">
+                <constraints nullable="false" notNullConstraintName="order_quantity_notnull" />
+            </column>
+            <column name="ship_date" type="datetime" />
+            <column name="status" type="int">
+                <constraints nullable="false" notNullConstraintName="order_status_notnull" />
+            </column>
+            <column name="complete" type="boolean">
+                <constraints nullable="false" notNullConstraintName="order_complete_notnull" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

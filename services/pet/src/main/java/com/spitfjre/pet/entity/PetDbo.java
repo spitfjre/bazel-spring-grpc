@@ -15,7 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -47,9 +46,6 @@ public class PetDbo implements DtoConvertable<Pet> {
     @NotBlank
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
-    private List<ImageDbo> images;
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
         name = "pet_tag",
@@ -64,10 +60,6 @@ public class PetDbo implements DtoConvertable<Pet> {
 
     @Override
     public Pet convertToDto() {
-        final List<String> photoUrls = Optional
-            .ofNullable(images)
-            .map(i -> i.stream().map(ImageDbo::getUrl).collect(Collectors.toList()))
-            .orElse(new ArrayList<>());
         final List<Tag> convertedTags = Optional
             .ofNullable(tags)
             .map(t -> t.stream().map(TagDbo::convertToDto).collect(Collectors.toList()))
@@ -75,7 +67,6 @@ public class PetDbo implements DtoConvertable<Pet> {
 
         return Pet
             .newBuilder()
-            .addAllPhotoUrls(photoUrls)
             .addAllTags(convertedTags)
             .setCategory(category.convertToDto())
             .setId(id)

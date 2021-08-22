@@ -16,8 +16,6 @@ import io.swagger.petstore.api.v2.Pet;
 import io.swagger.petstore.api.v2.PetServiceGrpc;
 import io.swagger.petstore.api.v2.UpdatePetRequest;
 import io.swagger.petstore.api.v2.UpdatePetWithFormDataRequest;
-import io.swagger.petstore.api.v2.UploadImageRequest;
-import io.swagger.petstore.api.v2.UploadImageResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -27,15 +25,6 @@ import net.devh.boot.grpc.server.service.GrpcService;
 public class PetController extends PetServiceGrpc.PetServiceImplBase {
 
     private final PetService petService;
-
-    @Override
-    public void uploadImage(
-        final UploadImageRequest request,
-        final StreamObserver<UploadImageResponse> responseObserver
-    ) {
-        responseObserver.onNext(null);
-        responseObserver.onCompleted();
-    }
 
     @Override
     public void addPet(final AddPetRequest request, final StreamObserver<AddPetResponse> responseObserver) {

@@ -8,18 +8,6 @@ package io.swagger.petstore.api.v2;
 import "google/protobuf/empty.proto";
 import "api/pet.proto";
 
-message UploadImageRequest {
-  int64 pet_id = 1;
-  string additional_metadata = 2;
-  bytes file = 3;
-}
-
-message UploadImageResponse {
-  int32 code = 1;
-  string type = 2;
-  string message = 3;
-}
-
 message AddPetRequest {
   int64 category_id = 1;
   string name = 2;
@@ -71,8 +59,6 @@ message DeletePetRequest {
 
 // Everything about your pets
 service PetService {
-  // Uploads an image
-  rpc UploadImage (UploadImageRequest) returns (UploadImageResponse);
 
   // Add a new pet to the store
   rpc AddPet (AddPetRequest) returns (AddPetResponse);

@@ -1,11 +1,11 @@
 grpc:
   server:
-    port: 9090
+    port: 9091
 
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:petdb
+    url: jdbc:h2:mem:storedb
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:

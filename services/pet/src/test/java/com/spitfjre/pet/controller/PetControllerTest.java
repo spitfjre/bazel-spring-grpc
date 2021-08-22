@@ -21,13 +21,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ActiveProfiles("test")
 @DirtiesContext
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(
-    properties = {
-        "grpc.server.inProcessName=test", // Enable inProcess server
-        "grpc.server.port=-1", // Disable external server
-        "grpc.client.inProcess.address=in-process:test", // Configure the client to connect to the inProcess server
-    }
-)
+@SpringBootTest
 public class PetControllerTest {
 
     @Autowired

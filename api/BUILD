@@ -17,19 +17,11 @@ java_grpc_library(
 java_grpc_library(
     name = "store_service__java",
     protos = [
+        ":category_proto",
         ":order_proto",
+        ":pet_proto",
         ":store_service__proto",
-    ],
-    visibility = [
-        "//services:__subpackages__",
-    ],
-)
-
-java_grpc_library(
-    name = "user_service__java",
-    protos = [
-        ":user_proto",
-        ":user_service__proto",
+        ":tag_proto",
     ],
     visibility = [
         "//services:__subpackages__",
@@ -82,6 +74,7 @@ proto_library(
     ],
     deps = [
         ":order_proto",
+        ":pet_proto",
         "@com_google_protobuf//:empty_proto",
     ],
 )
@@ -90,23 +83,5 @@ proto_library(
     name = "tag_proto",
     srcs = [
         "tag.proto",
-    ],
-)
-
-proto_library(
-    name = "user_proto",
-    srcs = [
-        "user.proto",
-    ],
-)
-
-proto_library(
-    name = "user_service__proto",
-    srcs = [
-        "user_service.proto",
-    ],
-    deps = [
-        ":user_proto",
-        "@com_google_protobuf//:empty_proto",
     ],
 )

@@ -1,0 +1,13 @@
+grpc:
+  client:
+    inProcess:
+      address: in-process:test
+    pet:
+      address: in-process:test
+  server:
+    in-process-name: test
+    port: -1
+
+spring:
+  liquibase:
+    change-log: classpath:db.changelog-master.xml
