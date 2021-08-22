@@ -41,7 +41,7 @@ test_deps = [
 ] + deps
 
 java_junit5_test(
-    name = "spring_test",
+    name = "test",
     srcs = glob([
         "src/test/java/com/spitfjre/pet/**/*.java",
     ]),

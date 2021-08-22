@@ -7,7 +7,6 @@ package io.swagger.petstore.api.v2;
 
 import "google/protobuf/empty.proto";
 import "api/order.proto";
-import "api/pet.proto";
 
 message GetInventoryResponse {
   map<string, int32> inventory_by_status = 1;
