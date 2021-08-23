@@ -1,4 +1,4 @@
-# multi-grpc
+# bazel-spring-grpc
 
 Playground for Monorepo for gRPC Spring Services managed by Bazel
 
